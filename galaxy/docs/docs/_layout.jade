@@ -1,0 +1,46 @@
+doctype
+html
+	head
+		title Galaxy Basics
+		meta(name="description" content="Learn how easy it is to build components with Galaxy!")
+		link(rel="icon" href="/img/favicon.png")
+		link(rel="stylesheet" href="/css/galaxy.css")
+		link(rel="stylesheet" href="/css/docs.css")
+		link(rel="stylesheet" href="/plugins/highlight/styles/tomorrow.css")
+
+body(ondragstart="return false")
+
+	header
+		a(href="/")
+			img(src="/media/logo-dark.png" alt="Galaxy" width="75")
+		nav(st-role="target" st-group="header")
+			ul
+				li
+					a.active(href="/docs/") Getting Started
+				li
+					a(href="/components" class=current.source == 'components' ? 'active' : '') Components
+				li
+					a(href="https://github.com/Magmoz/galaxy" target="_blank") Github Repo</a>
+
+		a(st-role="trigger" st-group="header" st-state="expanded" g="toggle")
+
+
+	.banner
+		h2(g="text-center") The beginner's guide to Galaxy
+
+	section(g="center xlg-container")
+		aside(g="lg-padding-lr lg-padding-t" style="border-right: #ddd 1px solid")
+			ul
+				li
+					a(href="/docs/" class=current.source=='index'?'active':'') Overview
+				li
+					a(href="/docs/building-components" class=current.source=='building-components'?'active':'') Building Components
+				li
+					a(href="/docs/states" class=current.source=='states'?'active':'') State toggling
+				li Contributing
+			
+
+		div(g="10 lg-container lg-padding content")
+			!= yield
+
+	!=partial("../_partials/footer")

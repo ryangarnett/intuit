@@ -1,0 +1,38 @@
+link(rel="stylesheet" href="/css/home.css")
+
+canvas
+.opening.banner(g="centered column")
+	.site-logo(g="centered") <img src="/media/logo-dark.png" style="margin-top: 1em;">
+	section(g="centered md-padding")
+
+		div(g="md-container")
+			h1(g="12 centered bold") Galaxy
+
+			h3(g="sm-padding-b") A friendly, modern, and conversational framework for building front-end layouts with ease.
+
+			a(href="/docs" g="centered lg-margin")
+				button.cta Read Documentation
+
+	ul.github-buttons
+		li <a class="github-button" href="https://github.com/Magmoz/galaxy" data-icon="octicon-star" data-style="mega" data-count-href="/Magmoz/galaxy/stargazers" data-count-api="/repos/Magmoz/galaxy#stargazers_count">Star</a>
+		li <a class="github-button" href="https://github.com/Magmoz/galaxy" data-icon="octicon-git-branch" data-style="mega" data-count-href="/Magmoz/galaxy/network" data-count-api="/repos/Magmoz/galaxy#forks_count">Fork</a>
+			
+
+div(g="centered md-container md-padding")
+	h2 Easy, modern, and straightforward layouts
+	p Galaxy packages Flexbox, custom attributes, and out-of-the-box performance optimization so you can focus fully on design rather than the complexities of CSS.
+	a(href="/docs/") → Get Started Guide
+hr
+section(g="centered around lg-padding")
+	div(g="4 lg-12 column")
+		img(g="centered" width="200" src="/media/performant.png")
+		h3 Lightning fast
+		p(g="md-margin-lr") Most of Galaxy is handled in CSS, making motion ui feeling incredibly smooth and native. In fact, Galaxy.js is only 3kb minified!
+	div(g="4 lg-12 column")
+		img(g="centered" width="200" src="/media/design-specs.png")
+		h3 Built on design specs
+		p(g="md-margin-lr") Galaxy follows a variation of the <a href="https://www.google.com/design/spec/components/grids.html#grids-usage" target="_blank">Google's Design Specs</a>, making the framework consistent, beautiful, and legibly crafted.
+	div(g="4 lg-12 column")
+		img(g="centered" width="200" src="/media/native.png")
+		h3 Semantic markup
+		p(g="md-margin-lr") By using the <strong>g</strong> attribute, there are literally no naming constraints. This means no prefixing, overriding styles, or messy markup.
