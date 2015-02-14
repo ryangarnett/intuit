@@ -35,6 +35,21 @@ function prevCard() {
     }
 }
 
+function playCard() {
+    var count = 0;
+    var timerId = setInterval(function() {
+        count++;
+
+        if (count == 0) {
+            $('#weather-data').load('jquery-fetch/fetch-weatherdata.php?place=' + myplace);
+            clearInterval(timerId);
+            countdown();
+        }
+    }, 1000);
+}
+
+
+
 //Arrow Keys Pressed
 $(document).keydown(function(e) {
     var key = e.keyCode;
