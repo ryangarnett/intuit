@@ -169,7 +169,7 @@ function prevCard() {
 }
 
 function skipCard() {
-    UIkit.notify("Hiding similar results", {pos:'top-right'});
+    UIkit.notify("Hiding similar results", {timeout:1000, pos:'top-right'});
     var $card = $('.card.present');
     var $prev = $card.prev();
     var $video = document.querySelector('.present video');
