@@ -49,9 +49,14 @@ $.ajax ({
                 $cards.append('<li class="card present" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="skip">Skip intro</button></li>');
             } else {
 
-                $cards.append('<li class="card future" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="">Skip intro</button></li>');
+                $cards.append('<li class="card future" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="skip">Skip intro</button></li>');
 
             }
+
+            $('.cards .skip').click(function() {
+                skipCard();
+        
+            });
 
             var $video = document.querySelector('.present video');
             $video.play();
@@ -62,6 +67,36 @@ $.ajax ({
         $prevAvatar.css('background-image', 'url(' + res.data.records[0].avatarUrl + ')');
     }
 });
+
+function skipCard() {
+    var $card = $('.card.present');
+    var $next = $card.next();
+    var $video = document.querySelector('.present video');
+            
+
+    if($next.length === 0) {
+        $card.addClass('jiggle').delay(400).queue(function(next){
+            $(this).removeClass('jiggle');
+            next();
+        });
+    } else {
+
+        // Get rid of and pause the current video
+        $video.pause();
+        $video.currentTime = 0;
+        $card.addClass('past').removeClass('present');
+        // Play the new video
+        $next.addClass('present').removeClass('future').removeClass('past');
+        var $video = document.querySelector('.present video');
+        $video.play();
+
+        id = $('.card.present').data('id');
+
+        $nextAvatar.css('background-image', 'url(' + res.data.records[id + 1].avatarUrl + ')');
+        $prevAvatar.css('background-image', 'url(' + res.data.records[id - 1].avatarUrl + ')');
+        
+    }
+}
 
 
 function nextCard() {
@@ -124,7 +159,7 @@ function prevCard() {
 //Arrow Keys Pressed
 $(document).keydown(function(e) {
     var key = e.keyCode;
-    // console.log(key);
+
     switch (key) {
         case 37:
             // left
@@ -136,7 +171,13 @@ $(document).keydown(function(e) {
             nextCard();
             e.preventDefault();
             break;
+        case 40:
+            // down
+            skipCard();
+            e.preventDefault();
+            break;
         }
+
 });
 
 $prev.on('click', function(){
@@ -155,6 +196,11 @@ $next.on('click', function(){
 $('body').on('swiperight', function(){
     debugger;
     nextCard();
+});
+
+$('body').on('swipedown', function(){
+    debugger;
+    skipCard();
 });
 
 $('.uk-notify-message').on('hover', function(){
