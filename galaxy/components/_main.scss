@@ -126,3 +126,11 @@ body.home .card {
     	height:25%;
     }
 }
+
+.dialog--open .dialog__overlay {
+	cursor: pointer;
+}
+#player0 .video-js {
+	height: 400px;
+}
+

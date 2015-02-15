@@ -1677,3 +1677,8 @@ body.home .card {
 
   #modal_wrapper {
     height: 25%; } }
+.dialog--open .dialog__overlay {
+  cursor: pointer; }
+
+#player0 .video-js {
+  height: 400px; }
