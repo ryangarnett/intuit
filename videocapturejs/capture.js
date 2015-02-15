@@ -54,7 +54,7 @@ function recordVideo() {
     video = document.querySelector('#record_video');
     video.src = URL.createObjectURL(localMediaStream);
     video.play();
-    $("#countdown").show(1000);
+    $("#countdown").show();
     countdown();
   }, function(err){
     console.log('Not supported');
@@ -78,6 +78,8 @@ function countdown() {
     temp.innerHTML = "7";
     video.pause();
     videoMediaStream.stop();
+    video = document.querySelector('#record_video');
+    video.src = '';
     $(".action").click();
     return;
   }
@@ -89,7 +91,11 @@ function countdown() {
 
 } 
  
-
+$("#show_modal").on('click', function() {
+  $('#recordButtons').fadeIn();
+  $('#getDiscovered').html('Get Discovered');
+  $("#countdown").hide();
+});
 
 
 

@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
 
-
 function getJson(url) {
     return JSON.parse($.ajax({
         type: 'GET',
@@ -15,6 +14,7 @@ function getJson(url) {
     }).responseText);
 }
 
+
 var $prev = $('.arrow.previous');
 var $prevAvatar = $('.arrow.prev .avatar');
 
@@ -25,6 +25,20 @@ var $skip = $('.skip');
 
 var $cards = $('.cards');
 
+
+function displayDetails() {
+
+    if ($('.card.present').not('[data-state="opened"]')) {
+        $('.card.present video').hide();
+
+        $('.card.present').append('<li class="card present"><div class="avatar"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div></li>').hide().fadeIn();
+    
+            $('.card.present').addClass('expanded');
+
+    }
+    
+    $('.card.present').data('state', 'opened');
+}
 
 
 var q = 'hackathon';
@@ -48,16 +62,19 @@ $.ajax ({
             var thumbnail = res.data.records[id].thumbnailUrl;
 
             if (id == 0) {
-                $cards.append('<li class="card present" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="skip">Skip intro</button></li>');
+                $cards.append('<li class="card present" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="promo.mp4" style="height: 400px !important;" type="video/mp4" /></video><button g="12 success centered large" class="skip">Skip intro</button></li>');
             } else {
 
-                $cards.append('<li class="card future" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="">Skip intro</button></li>');
+                $cards.append('<li class="card future" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><button g="12 success centered large" class="skip">Skip intro</button></li>');
 
             }
 
+            $('.cards .skip').click(function() {
+                skipCard();
+            });
+
             var $video = document.querySelector('.present video');
             $video.play();
-            displayDetails();
             id++;
         });
         
@@ -65,15 +82,7 @@ $.ajax ({
     }
 });
 
-function displayDetails() {
-    setTimeout( function(){ 
-        $('.card.present video').hide();
 
-        $('.card.present .avatar').append('<li class="card present"><div class="avatar"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div></li>');
-        
-        $('.card.present .avatar').addClass('expanded');
-    }, 7000);
-}
 
 
 function nextCard() {
@@ -134,7 +143,7 @@ function prevCard() {
     }
 }
 
-function skip() {
+function skipCard() {
     UIkit.notify("Hiding similar results", {pos:'top-right'});
     var $card = $('.card.present');
     var $prev = $card.prev();
@@ -152,7 +161,7 @@ function skip() {
 //Arrow Keys Pressed
 $(document).keydown(function(e) {
     var key = e.keyCode;
-    // console.log(key);
+
     switch (key) {
         case 37:
             // left
@@ -166,10 +175,11 @@ $(document).keydown(function(e) {
             break;
         case 40:
             // down
-            skip();
+            skipCard();
             e.preventDefault();
             break;
         }
+
 });
 
 $('body').on('swipeleft', function(){
@@ -183,6 +193,11 @@ $next.on('click', function(){
 $('body').on('swiperight', function(){
     debugger;
     nextCard();
+});
+
+$('body').on('swipedown', function(){
+    debugger;
+    skipCard();
 });
 
 $('.uk-notify-message').on('hover', function(){
