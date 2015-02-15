@@ -1682,3 +1682,36 @@ body.home .card {
 
 #player0 .video-js {
   height: 400px; }
+
+header {
+  background: rgba(0, 0, 0, 0.9);
+  height: 100vh;
+  z-index: 100;
+  opacity: 0.9; }
+
+.logo-bg {
+  border: 3px solid #999;
+  -webkit-border-radius: 50%;
+  -webkit-animation: pulsate 1s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  opacity: 0.9;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 37vh;
+  left: 43.5vw; }
+
+@-webkit-keyframes pulsate {
+  0% {
+    -webkit-transform: scale(0.1, 0.1);
+    opacity: 0.0; }
+  50% {
+    opacity: 1.0; }
+  100% {
+    -webkit-transform: scale(1.2, 1.2);
+    opacity: 0.0; } }
+input[type="text"] {
+  background: transparent;
+  color: #fff;
+  font-size: 3em;
+  border-bottom: 0 !important; }

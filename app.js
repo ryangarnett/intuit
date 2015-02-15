@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+$('header input').keypress(function(event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $(this).fadeOut();
+        $('header').css('height', '50px');
+        $('.logo-bg').hide();
+
+        var q = 'hackathon';
+        var q = $(this).val();
+        
 
 function getJson(url) {
     return JSON.parse($.ajax({
@@ -14,6 +24,7 @@ function getJson(url) {
     }).responseText);
 }
 
+var res = getJson('https://jsonp.nodejitsu.com/?callback=&url=https%3A%2F%2Fapi.vineapp.com%2Ftimelines%2Ftags%2F' + q);
 
 var $prev = $('.arrow.previous');
 var $prevAvatar = $('.arrow.prev .avatar');
@@ -48,9 +59,6 @@ function displayDetails() {
 }
 
 
-var q = 'hackathon';
-
-var res = getJson('https://jsonp.nodejitsu.com/?callback=&url=https%3A%2F%2Fapi.vineapp.com%2Ftimelines%2Ftags%2F' + q);
 
 
 
@@ -207,10 +215,6 @@ $(document).keydown(function(e) {
 
 });
 
-$('body').on('swipeleft', function(){
-    prevCard();
-});
-
 $next.on('click', function(){
     nextCard();
 });
@@ -239,6 +243,9 @@ $('body').on('mouseover', '.uk-notify-message', function () {
 $('body').on('click', '.card.present .skip', function(){
     debugger;
     $('.card.present').css('position', 'absolute').css('top', '2000').css('transition-duration', '3s');
+});
+
+    }
 });
 
 
