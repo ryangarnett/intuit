@@ -4,12 +4,16 @@
 	<link rel="stylesheet" href="http://volley.works/vendor/css/normalize.css">
 	<link rel="stylesheet" href="http://volley.works/css/all.css?v=1423945846">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-corner-indicator.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//vjs.zencdn.net/4.11/video-js.css">
 	<link rel="stylesheet" href="http://github.hubspot.com/offline/themes/offline-/theme-default.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.16.2/css/components/notify.almost-flat.min.css">
 	<link rel="stylesheet" href="/galaxy/galaxy.css">
+	<link rel="stylesheet" type="text/css" href="css/dialog.css" />
+	<link rel="stylesheet" type="text/css" href="css/dialog-cathy.css" />
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
 </head>
-<body class="home">
+<body class="home" style="position:relative">
 
 <header>
 	<ul>
@@ -40,8 +44,36 @@
 
 <ul class="cards"></ul>
 
+<div id="modal_wrapper"> 
+	<!-- data-dialog="somedialog" -->
+	<button id="show_modal" g="primary" class="circle trigger" data-dialog="somedialog"><i class="fa fa-camera-retro" style="padding-left:5px"></i></button>
+</div>
+
+<div id="somedialog" class="dialog">
+	<div class="dialog__overlay"></div>
+	<div class="dialog__content">
+		<h2>
+			<strong>Add Video</strong>
+		</h2>
+		<div style="margin-bottom:15px">
+		    <button onclick="recordVideo()">Record Video&nbsp;</button>
+		    <span id="countdown">7</span>
+		</div>
+
+	    <video id="record_video" g="md-padding-tb" width="500" height="500">
+	      
+	    </video>
+		<div>
+			<button g="success" class="action" data-dialog-close>Close</button>
+		</div>
+	</div>
+</div>
+
+ 			
+
 <!-- Javascript -->
 <script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
 <script src="http://adamschwartz.co/log/log.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
 <script src="https://platform.vine.co/static/scripts/embed.js"></script>
@@ -50,6 +82,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.16.2/js/uikit.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/2.16.2/js/components/notify.min.js"></script>
 <script src="/app.js"></script>
+<script src="js/classie.js"></script>
+<script src="js/dialogFx.js"></script>
+ <script src="bower_components/Recorderjs/recorder.js"></script>
+<script src="videocapturejs/capture.js"></script>
+
+<script>
+	(function() {
+
+		var dlgtrigger = document.querySelector( '[data-dialog]' ),
+			somedialog = document.getElementById( dlgtrigger.getAttribute( 'data-dialog' ) ),
+			dlg = new DialogFx( somedialog );
+
+		dlgtrigger.addEventListener( 'click', dlg.toggle.bind(dlg) );
+
+	})();
+</script>
 
 </body>
 </html>

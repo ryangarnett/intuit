@@ -56,3 +56,42 @@ body.home div.arrow.previous:hover {
 	-o-transition: all 180ms ease;
 	transition: all 180ms ease;
 }
+ 
+#modal_wrapper {
+	position:absolute;
+	bottom:0;
+	height:80px;
+	width: 100%;
+	text-align:center;
+}
+
+#show_modal {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.circle {
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+}
+
+#somedialog {
+	z-index:1;
+}
+
+#countdown {
+	border: 1px solid #767676;
+	padding: 5px 12px;
+	border-radius: 5px;
+	display:none;
+}
+
+.fa-camera-retro:before {
+	position: absolute;
+	left: -10px;
+}
