@@ -1105,7 +1105,7 @@ aside {
 	_______
 */
 label:not([for]) {
-  padding: .6rem 1rem .6rem;
+  padding: .4rem 1rem .4rem;
   font-size: .8rem;
   font-weight: 700;
   line-height: 1;
@@ -1584,6 +1584,9 @@ alert {
     This is the SASS that overrides Galaxy.
     _______
 */
+h3 {
+  font-weight: normal !important; }
+
 .search {
   width: 100vw;
   height: 100vh; }
