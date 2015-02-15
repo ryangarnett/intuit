@@ -1,8 +1,8 @@
 $(document).ready(function(){
 
 
-var $left = $('.divided.left.reply');
-var $right = $('.divided.right.volley');
+var $left = $('.arrow.previous');
+var $right = $('.arrow.next');
 
 
 function nextCard() {
