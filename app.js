@@ -26,14 +26,20 @@ var $skip = $('.skip');
 var $cards = $('.cards');
 
 
+function expand() {
+    $(this).addClass('expanded');
+}
+    
 function displayDetails() {
+
+    
 
     if ($('.card.present').not('[data-state="opened"]')) {
         $('.card.present video').hide();
 
-        $('.card.present').append('<li class="card present"><div class="avatar"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div></li>').hide().fadeIn();
+        $('.card.present').append('<div class="avatar" onclick="expand()"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div>');
     
-            $('.card.present').addClass('expanded');
+            $('.card.present').delay(2000).addClass('expanded');
 
     }
     
