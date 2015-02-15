@@ -71,7 +71,7 @@ $.ajax ({
                 }
             });
             tags_hashtable[hash_count] = tags_array;
-            hash_count++;
+           
             // for(var i=0;i<tags_array.length;i++) {
             //     $(".tags").append("<label g='primary'>Collaborating</label>");
             // }
@@ -88,13 +88,14 @@ $.ajax ({
 
             }
 
-            $('.cards .skip').click(function() {
+            $('[data-id="' + hash_count + '"]').click(function() {
                 skipCard();
             });
 
             var $video = document.querySelector('.present video');
             $video.play();
             id++;
+            hash_count++;
         });
         //console.log(tags_hashtable);
         $nextAvatar.css('background-image', 'url(' + res.data.records[1].avatarUrl + ')');
