@@ -14,6 +14,7 @@ var q = 'hackathon';
 
 var data;
 
+
 $.ajax ({
     url: 'https://jsonp.nodejitsu.com/?callback=&url=https%3A%2F%2Fapi.vineapp.com%2Ftimelines%2Ftags%2F' + q,
     type: 'GET',
@@ -33,6 +34,7 @@ $.ajax ({
             } else {
                 $cards.append('<li class="card future" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><div class="buttons"><button class="divided left reply">Skip thing</button><button class="divided right volley">Next thing</button></div></li>');
             }
+            var video = $('.card.present video');
             id++;
         });
         

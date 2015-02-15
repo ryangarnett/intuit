@@ -1584,3 +1584,6 @@ alert {
     This is the SASS that overrides Galaxy.
     _______
 */
+.search {
+  width: 100vw;
+  height: 100vh; }
