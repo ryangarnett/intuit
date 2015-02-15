@@ -24,13 +24,9 @@ h3 {
 }
 
 .uk-notify-message {
-	background: lighten($primary-color, 10);
+	background: rgba($primary-color, .9);
 	border: none;
 	color: #fff;
-}
-
-.logo {
-	font-size: 2em;
 }
 
 body.home div.arrow.next:hover {
@@ -135,15 +131,17 @@ body.home .card {
 }
 
 header {
-	background: rgba(#000, 0.9);
+	background: rgba(#000, 0.8);
 	color: #fff !important;
 	height: 100vh;
 	z-index: 100;
 	opacity: .9
 }
-
+.logo {
+	font-size: 2em;
+}
 .logo-bg {
-    border: 3px solid #999;
+    border: 3px solid #fff;
     -webkit-border-radius: 50%;
     -webkit-animation: pulsate 1s ease-out;
     -webkit-animation-iteration-count: infinite; 

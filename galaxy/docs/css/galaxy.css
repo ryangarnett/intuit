@@ -1361,12 +1361,9 @@ h3 {
   height: 100vh; }
 
 .uk-notify-message {
-  background: #61b6ff;
+  background: rgba(46, 159, 255, 0.9);
   border: none;
   color: #fff; }
-
-.logo {
-  font-size: 2em; }
 
 body.home div.arrow.next:hover {
   background-color: none; }
@@ -1452,14 +1449,17 @@ body.home .card {
   height: 400px; }
 
 header {
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff !important;
   height: 100vh;
   z-index: 100;
   opacity: 0.9; }
 
+.logo {
+  font-size: 2em; }
+
 .logo-bg {
-  border: 3px solid #999;
+  border: 3px solid #fff;
   -webkit-border-radius: 50%;
   -webkit-animation: pulsate 1s ease-out;
   -webkit-animation-iteration-count: infinite;
