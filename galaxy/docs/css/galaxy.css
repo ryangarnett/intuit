@@ -1399,7 +1399,8 @@ body.home div.arrow.previous:hover {
 #show_modal {
   position: relative;
   top: 50%;
-  transform: translateY(-50%); }
+  transform: translateY(-50%);
+  z-index: 1; }
 
 .circle {
   width: 60px;
@@ -1437,5 +1438,12 @@ body.home .card {
 
 #getDiscovered {
   font-weight: bold; }
+
+@media screen and (max-width: 412px) {
+  #close_video_btn {
+    margin-top: 10px; }
+
+  #modal_wrapper {
+    height: 25%; } }
 
 /*# sourceMappingURL=galaxy.css.map */

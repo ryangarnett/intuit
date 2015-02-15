@@ -81,6 +81,7 @@ function countdown() {
     video = document.querySelector('#record_video');
     video.src = '';
     $(".action").click();
+    UIkit.notify("<i class='fa fa-check'></i> Video saved succesfully.", {status:'success', timeout:1800, pos:'top-right'});
     return;
   }
 

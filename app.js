@@ -22,7 +22,8 @@ var $nextAvatar = $('.arrow.next .avatar');
 var $skip = $('.skip');
 
 var $cards = $('.cards');
-
+var tags_hashtable = new Object();
+var hash_count = 0;
 
 
 var q = 'hackathon';
@@ -40,6 +41,18 @@ $.ajax ({
         $.each(res.data.records, function(k, v) {
             var avatar = res.data.records[id].avatarUrl;
             var summary = res.data.records[id].description;
+            var tagslistarr = summary.split(' ');
+            var tags_array=[];
+            $.each(tagslistarr,function(i,val){
+                if(tagslistarr[i].indexOf('#') == 0){
+                  tags_array.push(tagslistarr[i]);  
+                }
+            });
+            tags_hashtable[hash_count] = tags_array;
+            hash_count++;
+            // for(var i=0;i<tags_array.length;i++) {
+            //     $(".tags").append("<label g='primary'>Collaborating</label>");
+            // }
             var username = res.data.records[id].username;
             var video = res.data.records[id].videoUrl;
             var shareUrl = res.data.records[id].shareUrl;
@@ -62,7 +75,7 @@ $.ajax ({
             $video.play();
             id++;
         });
-        
+        //console.log(tags_hashtable);
         $nextAvatar.css('background-image', 'url(' + res.data.records[1].avatarUrl + ')');
         $prevAvatar.css('background-image', 'url(' + res.data.records[0].avatarUrl + ')');
     }
@@ -103,7 +116,16 @@ function nextCard() {
     var $card = $('.card.present');
     var $next = $card.next();
     var $video = document.querySelector('.present video');
-            
+
+    var card_id = $next.attr('data-id');
+    var current_tags = (tags_hashtable[card_id]);
+    $('.tags').html('');
+    for(var i=0;i<current_tags.length;i++) {
+        console.log(current_tags[i]);
+        $('.tags').append("<label g='primary'>" + current_tags[i] + "</label><br><br>");
+    }
+
+ 
 
     if($next.length === 0) {
         $card.addClass('jiggle').delay(400).queue(function(next){
@@ -213,8 +235,5 @@ $('body').on('mouseover', '.uk-notify-message', function () {
     $(this).html('Avoid similar events?');
 });
 
-$skip.on('click', function(){
-
-});
 
 });

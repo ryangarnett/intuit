@@ -69,6 +69,7 @@ body.home div.arrow.previous:hover {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
+	z-index:1;
 }
 
 .circle {
@@ -114,4 +115,14 @@ body.home .card {
 }
 #getDiscovered {
 	font-weight: bold;
+}
+
+//Fixes app on mobile
+@media screen and (max-width: 412px) {
+    #close_video_btn {
+    	margin-top:10px;
+    }
+    #modal_wrapper {
+    	height:25%;
+    }
 }
