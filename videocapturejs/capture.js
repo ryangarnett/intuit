@@ -42,6 +42,9 @@ function stop() {
 }
 
 function recordVideo() {
+  $('#recordButtons').fadeOut();
+  $('#getDiscovered').html('Recording...');
+
   navigator.getUserMedia({video: true, audio: true}, function(localMediaStream){
     videoMediaStream = localMediaStream;
     var Context = window.AudioContext || window.webkitAudioContext;

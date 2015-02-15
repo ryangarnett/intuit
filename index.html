@@ -46,26 +46,29 @@
 
 <div id="modal_wrapper"> 
 	<!-- data-dialog="somedialog" -->
-	<button id="show_modal" g="primary" class="circle trigger" data-dialog="somedialog"><i class="fa fa-camera-retro" style="padding-left:5px"></i></button>
+	<button id="show_modal" g="primary" class="circle trigger" data-dialog="somedialog"><i class="fa fa-video-camera" style="padding-left:5px"></i></button>
 </div>
 
 <div id="somedialog" class="dialog">
 	<div class="dialog__overlay"></div>
 	<div class="dialog__content">
-		<h2>
-			<strong>Add Video</strong>
+		<h2 g="md-margin-t" id="getDiscovered">
+			Get Discovered
 		</h2>
-		<div style="margin-bottom:15px">
-		    <button onclick="recordVideo()">Record Video&nbsp;</button>
+		<section g="centered" id="recordButtons">
+			<button onclick="recordVideo()" g="success">Record a Video&nbsp;</button>
+			<div>
+				<button class="action" data-dialog-close>Close</button>
+			</div>
+		</section>
+		<div style="margin-bottom:15px; ">
 		    <span id="countdown">7</span>
 		</div>
 
-	    <video id="record_video" g="md-padding-tb" width="500" height="500">
+	    <video id="record_video" g="md-margin-tb" width="500" height="500">
 	      
 	    </video>
-		<div>
-			<button g="success" class="action" data-dialog-close>Close</button>
-		</div>
+		
 	</div>
 </div>
 
@@ -86,6 +89,13 @@
 <script src="js/dialogFx.js"></script>
  <script src="bower_components/Recorderjs/recorder.js"></script>
 <script src="videocapturejs/capture.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type="text/javascript">
+  google.load("search", "1");
+  google.load("jquery", "1.4.2");
+  google.load("jqueryui", "1.7.2");
+</script>
 
 <script>
 	(function() {

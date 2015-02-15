@@ -58,9 +58,9 @@ body.home div.arrow.previous:hover {
 }
  
 #modal_wrapper {
-	position:absolute;
-	bottom:0;
-	height:80px;
+	position: absolute;
+	bottom: 0;
+	height: 174px;
 	width: 100%;
 	text-align:center;
 }
@@ -85,13 +85,33 @@ body.home div.arrow.previous:hover {
 }
 
 #countdown {
-	border: 1px solid #767676;
-	padding: 5px 12px;
-	border-radius: 5px;
 	display:none;
+	font-size: 1.7em;
 }
 
-.fa-camera-retro:before {
+.fa-video-camera:before {
 	position: absolute;
 	left: -10px;
+}
+
+button {
+	border: 0;
+}
+.buttons {
+	background: $success-color;
+}
+
+body.home .card {
+	height: 450px;
+}
+
+.dialog__content {
+	border-radius: 6px;
+}
+
+#record_video {
+	border: #ddd 3px dotted;
+}
+#getDiscovered {
+	font-weight: bold;
 }
