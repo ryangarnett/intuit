@@ -7,7 +7,6 @@ $('header input').keypress(function(event) {
         $('header').css('height', '50px');
         $('.logo-bg').hide();
 
-        var q = 'hackathon';
         var q = $(this).val();
         
 

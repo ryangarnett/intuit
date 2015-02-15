@@ -1453,6 +1453,7 @@ body.home .card {
 
 header {
   background: rgba(0, 0, 0, 0.9);
+  color: #fff !important;
   height: 100vh;
   z-index: 100;
   opacity: 0.9; }
@@ -1483,5 +1484,8 @@ input[type="text"] {
   color: #fff;
   font-size: 3em;
   border-bottom: 0 !important; }
+
+header li {
+  margin-right: 1750px; }
 
 /*# sourceMappingURL=galaxy.css.map */
