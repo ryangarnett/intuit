@@ -5,6 +5,14 @@
     _______
 */
 
+body {
+	$sans-serif: 'Avenir', 'Helvetica', 'Arial', sans-serif;
+}
+
+body.home div.arrow:hover .content h3 {
+	color: #777;
+}
+
 h3 {
 	font-weight: normal !important;
 }
@@ -13,4 +21,38 @@ h3 {
 	width: 100vw;
 	height: 100vh;
 
+}
+
+.uk-notify-message {
+	background: lighten($primary-color, 10);
+	border: none;
+	color: #fff;
+}
+
+.logo {
+	font-size: 2em;
+}
+
+body.home div.arrow.next:hover {
+	background-color: none;
+}
+
+body.home div.arrow.previous:hover {
+	background-color: none;
+}
+
+.underlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0.4;
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-size: cover;
+	z-index: 1;
+	-webkit-transition: all 180ms ease;
+	-moz-transition: all 180ms ease;
+	-o-transition: all 180ms ease;
+	transition: all 180ms ease;
 }

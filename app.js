@@ -42,10 +42,12 @@ $.ajax ({
             var video = res.data.records[id].videoUrl;
             var shareUrl = res.data.records[id].shareUrl;
             var thumbnail = res.data.records[id].thumbnailUrl;
+
             if (id == 0) {
                 $cards.append('<li class="card present" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><div class="buttons"><button class="divided left reply">Skip thing</button><button class="divided right volley">Next thing</button></div></li>');
             } else {
                 $cards.append('<li class="card future" id="player' + id + '" data-id="' + id + '"><video class="video-js vjs-default-skin" preload="auto" height="400" width="400" poster="' + thumbnail + '"><source src="' + video + '" type="video/mp4" /></video><div class="buttons"><button class="divided left reply">Skip thing</button><button class="divided right volley">Next thing</button></div></li>');
+
             }
 
             var $video = document.querySelector('.present video');
@@ -71,8 +73,10 @@ function nextCard() {
             next();
         });
     } else {
+        UIkit.notify("You don't like pizza.", {pos:'top-right'});
         // Get rid of and pause the current video
         $video.pause();
+        $video.currentTime = 0;
         $card.addClass('past').removeClass('present');
         // Play the new video
         $next.addClass('present').removeClass('future').removeClass('past');
@@ -100,13 +104,13 @@ function prevCard() {
     } else {
         // Get rid of and pause the current video
         $video.pause();
+        $video.currentTime = 0;
         $card.addClass('future').removeClass('present');
 
         // Play the new video
         $prev.addClass('present').removeClass('future').removeClass('past');
         var $video = document.querySelector('.present video');
         video.play();
-        log(id);
     }
 }
 
@@ -147,6 +151,14 @@ $('body').on('swiperight', function(){
     nextCard();
 });
 
+$('.uk-notify-message').on('hover', function(){
+    $('.uk-notify-message').prepend('<i class="uk-icon-check"></i>');
+    debugger;
+});
 
+$('body').on('mouseover', '.uk-notify-message', function () {
+    message = $(this).html();
+    $(this).html('Avoid similar events?');
+});
 
 });
