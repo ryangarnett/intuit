@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+
 function getJson(url) {
     return JSON.parse($.ajax({
         type: 'GET',
@@ -55,20 +57,32 @@ $.ajax ({
 
             var $video = document.querySelector('.present video');
             $video.play();
+            displayDetails();
             id++;
         });
         
         $nextAvatar.css('background-image', 'url(' + res.data.records[1].avatarUrl + ')');
-        $prevAvatar.css('background-image', 'url(' + res.data.records[0].avatarUrl + ')');
     }
 });
+
+function displayDetails() {
+    setTimeout( function(){ 
+        $('.card.present video').hide();
+        $('.card.present .avatar').append('<li class="card present"><div class="avatar"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div></li>');
+        $('.card.present .avatar').addClass('expanded');
+    }, 7000);
+}
 
 
 function nextCard() {
     var $card = $('.card.present');
     var $next = $card.next();
     var $video = document.querySelector('.present video');
-            
+
+
+    displayDetails();
+
+    
 
     if($next.length === 0) {
         $card.addClass('jiggle').delay(400).queue(function(next){
@@ -91,7 +105,6 @@ function nextCard() {
         id = $('.card.present').data('id');
 
         $nextAvatar.css('background-image', 'url(' + res.data.records[id + 1].avatarUrl + ')');
-        $prevAvatar.css('background-image', 'url(' + res.data.records[id - 1].avatarUrl + ')');
         
     }
 }
@@ -109,14 +122,15 @@ function prevCard() {
         });
     } else {
         // Get rid of and pause the current video
-        $video.pause();
         $video.currentTime = 0;
+        $video.pause();
         $card.addClass('future').removeClass('present');
 
         // Play the new video
         $prev.addClass('present').removeClass('future').removeClass('past');
         var $video = document.querySelector('.present video');
-        video.play();
+        $video.currentTime = 0;
+        $video.play();
     }
 }
 
@@ -167,8 +181,11 @@ $('body').on('mouseover', '.uk-notify-message', function () {
     $(this).html('Avoid similar events?');
 });
 
-$skip.on('click', function(){
-
+$('body').on('click', '.card.present .skip', function(){
+    debugger;
+    $('.card.present').css('position', 'absolute').css('top', '2000').css('transition-duration', '3s');
 });
+
+
 
 });

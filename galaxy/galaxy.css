@@ -1669,3 +1669,6 @@ body.home .card {
 
 #getDiscovered {
   font-weight: bold; }
+
+.dialog--open .dialog__overlay {
+  cursor: pointer; }
