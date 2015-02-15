@@ -68,7 +68,9 @@ $.ajax ({
 function displayDetails() {
     setTimeout( function(){ 
         $('.card.present video').hide();
+
         $('.card.present .avatar').append('<li class="card present"><div class="avatar"><div class="underlay" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-blurred.jpg\')"></div><div class="info"><p class="bio">Reader, writer, science lover. Fashion makes me happy.<a class="no-hover" target="_blank" href="http://www.twitter.com/ManviBhalla">@ManviBhalla</a><br><br>Stoney Creek, Canada</p><br><span class="location"></span><a class="name" target="_blank" href="people/JDw2">Manvi B.</a><br><span class="relation">Approved by Volley</span><a class="small-pic" href="./people/JDw2" style="background-image:url(\'http://volley.works/profiles/125b0312b2672ab0f2d10218630c64ad-avatar.jpg\')"></a></div></div><div class="content"><p>Looking for somewhere to find old/used/vintage books for a school newspaper.</p><span class="tags"><span class="tag">WRITING</span></span></div><div class="buttons"><button class="divided left reply">Reply to Manvi</button><button class="divided right volley">Volley to Contact</button></div></li>');
+        
         $('.card.present .avatar').addClass('expanded');
     }, 7000);
 }
@@ -90,8 +92,7 @@ function nextCard() {
             next();
         });
     } else {
-        $('.uk-notify-message').fadeOut();
-        UIkit.notify("You don't like pizza.", {pos:'top-right'});
+        
 
         // Get rid of and pause the current video
         $video.pause();
@@ -110,7 +111,6 @@ function nextCard() {
 }
 
 function prevCard() {
-    $('.uk-notify-message').fadeOut();
     var $card = $('.card.present');
     var $prev = $card.prev();
     var $video = document.querySelector('.present video');
@@ -134,6 +134,20 @@ function prevCard() {
     }
 }
 
+function skip() {
+    UIkit.notify("Hiding similar results", {pos:'top-right'});
+    var $card = $('.card.present');
+    var $prev = $card.prev();
+    var $video = document.querySelector('.present video');
+    $card.css({
+        'transition-duration': '2s',
+        'position': 'absolute',
+        'top': '2000px'
+    }).delay(2000).hide();
+    $video.currentTime = 0;
+    $video.pause();
+    nextCard();
+}
 
 //Arrow Keys Pressed
 $(document).keydown(function(e) {
@@ -150,15 +164,15 @@ $(document).keydown(function(e) {
             nextCard();
             e.preventDefault();
             break;
+        case 40:
+            // down
+            skip();
+            e.preventDefault();
+            break;
         }
 });
 
-$prev.on('click', function(){
-    prevCard();
-});
-
 $('body').on('swipeleft', function(){
-    debugger;
     prevCard();
 });
 
